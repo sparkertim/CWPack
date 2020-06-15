@@ -328,7 +328,7 @@ double cw_unpack_next_time_interval (cw_unpack_context* unpack_context)
     return NaN;
 }
 
-unsigned int cw_unpack_next_str_lengh (cw_unpack_context* unpack_context)
+unsigned int cw_unpack_next_str_length (cw_unpack_context* unpack_context)
 {
     cw_unpack_next (unpack_context);
     if (unpack_context->return_code)        return 0;
@@ -340,6 +340,18 @@ unsigned int cw_unpack_next_str_lengh (cw_unpack_context* unpack_context)
     return NaN;
 }
 
+
+unsigned int cw_unpack_next_bin_length(cw_unpack_context* unpack_context)
+{
+	cw_unpack_next(unpack_context);
+	if (unpack_context->return_code)        return 0;
+
+	if (unpack_context->item.type == CWP_ITEM_BIN)
+		return unpack_context->item.as.bin.length;
+
+	unpack_context->return_code = CWP_RC_TYPE_ERROR;
+	return NaN;
+}
 
 unsigned int cw_unpack_next_array_size(cw_unpack_context* unpack_context)
 {

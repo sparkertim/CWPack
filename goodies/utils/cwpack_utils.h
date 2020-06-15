@@ -27,38 +27,45 @@
 #include "cwpack.h"
 
 /*******************************   P A C K   **********************************/
+#ifdef	__cplusplus
+extern "C" {
+#endif
 
 #define cw_pack_cstr(context,string) cw_pack_str (context, string, (uint32)strlen(string))
 
-void cw_pack_float_opt (cw_pack_context* pack_context, float f);    /* Pack as signed if precision isn't destroyed */
-void cw_pack_double_opt (cw_pack_context* pack_context, double d);  /* Pack as signed or float if precision isn't destroyed */
+	void cw_pack_float_opt(cw_pack_context* pack_context, float f);    /* Pack as signed if precision isn't destroyed */
+	void cw_pack_double_opt(cw_pack_context* pack_context, double d);  /* Pack as signed or float if precision isn't destroyed */
 #define  cw_pack_real cw_pack_double_opt                            /* Backward compatibility */
 
-void cw_pack_time_interval (cw_pack_context* pack_context, double ti);
+	void cw_pack_time_interval(cw_pack_context* pack_context, double ti);
 
-/*****************************   U N P A C K   ********************************/
+	/*****************************   U N P A C K   ********************************/
 
-bool cw_unpack_next_boolean (cw_unpack_context* unpack_context);
+	bool cw_unpack_next_boolean(cw_unpack_context* unpack_context);
 
-int64_t cw_unpack_next_signed64 (cw_unpack_context* unpack_context);
-int32_t cw_unpack_next_signed32 (cw_unpack_context* unpack_context);
-int16_t cw_unpack_next_signed16 (cw_unpack_context* unpack_context);
-int8_t cw_unpack_next_signed8 (cw_unpack_context* unpack_context);
+	int64_t cw_unpack_next_signed64(cw_unpack_context* unpack_context);
+	int32_t cw_unpack_next_signed32(cw_unpack_context* unpack_context);
+	int16_t cw_unpack_next_signed16(cw_unpack_context* unpack_context);
+	int8_t cw_unpack_next_signed8(cw_unpack_context* unpack_context);
 
-uint64_t cw_unpack_next_unsigned64 (cw_unpack_context* unpack_context);
-uint32_t cw_unpack_next_unsigned32 (cw_unpack_context* unpack_context);
-uint16_t cw_unpack_next_unsigned16 (cw_unpack_context* unpack_context);
-uint8_t cw_unpack_next_unsigned8 (cw_unpack_context* unpack_context);
+	uint64_t cw_unpack_next_unsigned64(cw_unpack_context* unpack_context);
+	uint32_t cw_unpack_next_unsigned32(cw_unpack_context* unpack_context);
+	uint16_t cw_unpack_next_unsigned16(cw_unpack_context* unpack_context);
+	uint8_t cw_unpack_next_unsigned8(cw_unpack_context* unpack_context);
 
-float cw_unpack_next_float (cw_unpack_context* unpack_context);
-double cw_unpack_next_double (cw_unpack_context* unpack_context);
-double cw_unpack_next_time_interval (cw_unpack_context* unpack_context);
+	float cw_unpack_next_float(cw_unpack_context* unpack_context);
+	double cw_unpack_next_double(cw_unpack_context* unpack_context);
+	double cw_unpack_next_time_interval(cw_unpack_context* unpack_context);
 #define cw_unpack_next_real cw_unpack_next_double                           /* Backward compatibility */
 
-unsigned int cw_unpack_next_str_lengh (cw_unpack_context* unpack_context);
+	unsigned int cw_unpack_next_str_length(cw_unpack_context* unpack_context);
+	unsigned int cw_unpack_next_bin_length(cw_unpack_context* unpack_context);
 
-unsigned int cw_unpack_next_array_size(cw_unpack_context* unpack_context);
-unsigned int cw_unpack_next_map_size(cw_unpack_context* unpack_context);
+	unsigned int cw_unpack_next_array_size(cw_unpack_context* unpack_context);
+	unsigned int cw_unpack_next_map_size(cw_unpack_context* unpack_context);
 
+#ifdef	__cplusplus
+}
+#endif
 #endif  /* CWPack_utils_H__ */
 
